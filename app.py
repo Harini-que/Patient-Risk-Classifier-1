@@ -3,7 +3,7 @@ import numpy as np
 import joblib
 
 # Load the saved artifacts
-model = joblib.load('model.pkl')
+model = joblib.load('model (1).pkl')
 scaler = joblib.load('scaler.pkl')
 risk_category_encoder = joblib.load('risk_category_encoder.pkl')
 
