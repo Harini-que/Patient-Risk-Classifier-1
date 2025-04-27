@@ -46,13 +46,9 @@ height = st.number_input(
      'Height (m)', min_value=0.5, 
      max_value=2.5, value=1.7)
 # **Derived Values Calculations**:
-# Pulse Pressure: Systolic BP - Diastolic BP
 derived_pp = systolic_bp - diastolic_bp
-# BMI: Weight (kg) / (Height (m))^2
 derived_bmi = weight / (height ** 2)
-# Mean Arterial Pressure (MAP): 
 derived_map = diastolic_bp + (1/3) * (systolic_bp - diastolic_bp)
-# HRV 
 derived_hrv = 100 / heart_rate  
 if st.button('Predict Risk Category'):
     # Encode gender the same way as training
