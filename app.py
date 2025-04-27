@@ -2,7 +2,7 @@ import streamlit as st
 import numpy as np
 import joblib
 
-# Load the saved artifacts
+# Load the saved model, scaler, and label encoder
 model = joblib.load('model (1).pkl')
 scaler = joblib.load('scaler.pkl')
 risk_category_encoder = joblib.load('risk_category_encoder.pkl')
@@ -21,15 +21,26 @@ age = st.number_input('Age (years)', min_value=0, max_value=120, value=30)
 gender = st.selectbox('Gender', ['Female', 'Male'])
 weight = st.number_input('Weight (kg)', min_value=10.0, max_value=200.0, value=70.0)
 height = st.number_input('Height (m)', min_value=0.5, max_value=2.5, value=1.7)
-derived_hrv = st.number_input('Derived HRV', min_value=0.0, max_value=200.0, value=50.0)
-derived_pp = st.number_input('Derived Pulse Pressure', min_value=10.0, max_value=100.0, value=40.0)
-derived_bmi = st.number_input('Derived BMI', min_value=10.0, max_value=50.0, value=25.0)
-derived_map = st.number_input('Derived MAP', min_value=40.0, max_value=150.0, value=90.0)
+
+# **Derived Values Calculations**:
+
+# Pulse Pressure: Systolic BP - Diastolic BP
+derived_pp = systolic_bp - diastolic_bp
+
+# BMI: Weight (kg) / (Height (m))^2
+derived_bmi = weight / (height ** 2)
+
+# Mean Arterial Pressure (MAP): Diastolic BP + 1/3(Systolic BP - Diastolic BP)
+derived_map = diastolic_bp + (1/3) * (systolic_bp - diastolic_bp)
+
+# HRV (example, replace with actual calculation if needed)
+# For simplicity, we will set it as a function of heart rate. Modify as per your formula.
+derived_hrv = 100 / heart_rate  # Example calculation, replace with real formula
 
 if st.button('Predict Risk Category'):
     # Encode gender the same way as training
     gender_encoded = 1 if gender == 'Male' else 0
-
+    
     # Build the feature vector in the exact order used during training
     input_data = np.array([[
         heart_rate,
