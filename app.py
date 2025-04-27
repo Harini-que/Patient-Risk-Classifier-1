@@ -32,10 +32,13 @@ if st.button('Predict Risk Category'):
     # Encode Gender (same way as in training: Female=0, Male=1)
     gender_encoded = 1 if gender == 'Male' else 0
     
-    # Prepare the feature array based on all the inputs
-    input_data = np.array([[heart_rate, respiratory_rate, body_temperature, oxygen_saturation,
-                            systolic_blood_pressure, diastolic_blood_pressure, age, gender_encoded, 
-                            weight, height, derived_hrv, derived_pulse_pressure, derived_bmi, derived_map]])
+   # Prepare the feature array based on all the inputs
+input_data = np.array(
+    [[heart_rate, respiratory_rate, body_temperature, oxygen_saturation,
+      systolic_blood_pressure, diastolic_blood_pressure, age, gender_encoded,
+      weight, height, derived_hrv, derived_pulse_pressure, derived_bmi,
+      derived_map]]
+)
 
     # Scale the features using the same scaler as the model
     input_scaled = scaler.transform(input_data)
