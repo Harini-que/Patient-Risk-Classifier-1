@@ -12,48 +12,39 @@ st.write("Please enter the following patient details:")
 heart_rate = st.number_input(
      'Heart Rate', min_value=30,
      max_value=200,
-     value=70
-)
+     value=70)
 respiratory_rate = st.number_input(
      'Respiratory Rate', min_value=10, 
-     max_value=50, value=16
-)
+     max_value=50, value=16)
 body_temperature = st.number_input(
      'Body Temperature (°C)', min_value=30.0,
-     max_value=45.0, value=37.0
-)
+     max_value=45.0, value=37.0)
 oxygen_saturation = st.number_input(
      'Oxygen Saturation (%)',
      min_value=60, 
-     max_value=100, value=98
-)
+     max_value=100, value=98)
 systolic_bp = st.number_input(
      'Systolic Blood Pressure (mmHg)',
      min_value=80,
-     max_value=200, value=120
-)
+     max_value=200, value=120)
 diastolic_bp = st.number_input(
      'Diastolic Blood Pressure (mmHg)', 
      min_value=40, max_value=120, 
-     value=80
-)
+     value=80)
 age = st.number_input(
      'Age (years)', min_value=0, 
      max_value=120, 
-     value=30
-)
+     value=30)
 gender = st.selectbox(
      'Gender', ['Female', 'Male'])
 weight = st.number_input(
      'Weight (kg)', 
      min_value=10.0, 
      max_value=200.0, 
-     value=70.0
- )
+     value=70.0)
 height = st.number_input(
      'Height (m)', min_value=0.5, 
-     max_value=2.5, value=1.7
-)
+     max_value=2.5, value=1.7)
 # **Derived Values Calculations**:
 # Pulse Pressure: Systolic BP - Diastolic BP
 derived_pp = systolic_bp - diastolic_bp
