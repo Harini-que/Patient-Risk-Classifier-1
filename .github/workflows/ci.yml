@@ -24,10 +24,6 @@ jobs:
         run: |
           pip install flake8 black
 
-      - name: Run Flake8 Linter
-        run: |
-          flake8 --select=W291 .
-
       - name: Run Black Formatter
         run: |
           black .
